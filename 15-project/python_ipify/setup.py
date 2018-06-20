@@ -39,7 +39,7 @@ setup(
     include_package_data=True,
     keywords='python_ipify',
     name='python_ipify',
-    packages=find_packages(include=['python_ipify']),
+    packages=find_packages(exclude=['tests']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
