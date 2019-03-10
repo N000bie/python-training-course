@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://mirrors.aliyun.com/pypi/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pyodbc = "*"
+sqlalchemy = "*"
+pyserial = "*"
+tox = "*"
+toolz = "*"
+six = "*"
+pexpect = "*"
+alembic = "*"
+
+[requires]
+python_version = "3.6"
