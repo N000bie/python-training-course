@@ -15,6 +15,7 @@ six = "*"
 pexpect = "*"
 alembic = "*"
 requests = "*"
+aiohttp = "*"
 
 [requires]
 python_version = "3.6"
