@@ -23,7 +23,7 @@ def flatten_record(r):
 
 
 def print_record(r):
-    pprint(flatten_record(r))
+    pprint(flatten_record(r), indent=2)
 
 
 session = get_session()
