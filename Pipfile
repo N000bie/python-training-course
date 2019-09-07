@@ -16,6 +16,7 @@ pexpect = "*"
 alembic = "*"
 requests = "*"
 aiohttp = "*"
+lxml = "*"
 
 [requires]
 python_version = "3"
