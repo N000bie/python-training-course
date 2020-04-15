@@ -6,7 +6,13 @@ import sys
 if 'win' in sys.platform:
     libc = ctypes.cdll.msvcrt
 else:
-    libc = ctypes.cdll.LoadLibrary(ctypes.util.find_library('c'))
+    libc_pos = ctypes.util.find_library('c')
+    if libc_pos is None:
+        raise RuntimeError(
+            'cannot locate libc, are you running in Linux '
+            + 'and/or have libc installed?'
+        )
+    libc = ctypes.cdll.LoadLibrary(libc_pos)
 
 
 def return_types():
@@ -26,7 +32,12 @@ def arg_types():
 
 def buffer():
     sprintf = libc.sprintf
-    sprintf.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int, ctypes.c_double]
+    sprintf.argtypes = [
+        ctypes.c_char_p,
+        ctypes.c_char_p,
+        ctypes.c_int,
+        ctypes.c_double,
+    ]
     buf = b''
     ret = sprintf(buf, b"An int %d, a double %f\n", 1234, 3.14)
     print('return:', ret, 'buffer:', buf)
@@ -39,9 +50,17 @@ def buffer():
     except AttributeError:
         snprintf = libc._snprintf
 
-    snprintf.argtypes = [ctypes.c_char_p, ctypes.c_size_t, ctypes.c_char_p, ctypes.c_int, ctypes.c_double]
+    snprintf.argtypes = [
+        ctypes.c_char_p,
+        ctypes.c_size_t,
+        ctypes.c_char_p,
+        ctypes.c_int,
+        ctypes.c_double,
+    ]
     buf = ctypes.create_string_buffer(b'', 10)
-    ret = snprintf(buf, ctypes.sizeof(buf), b"An int %d, a double %f\n", 1234, 3.14)
+    ret = snprintf(
+        buf, ctypes.sizeof(buf), b"An int %d, a double %f\n", 1234, 3.14
+    )
     print('return:', ret, 'buffer:', buf.value, buf.raw)
 
 

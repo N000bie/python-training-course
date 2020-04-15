@@ -1,4 +1,4 @@
-from itertools import combinations_with_replacement, starmap
+from itertools import combinations_with_replacement
 
 
 def solver(sections, darts, score):
