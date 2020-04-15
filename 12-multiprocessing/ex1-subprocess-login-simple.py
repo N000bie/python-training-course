@@ -5,7 +5,7 @@ from queue import Queue
 from threading import Thread
 
 login_test = subprocess.Popen(
-    ['py', '-3', 'login_test.py'],
+    ['python', 'login_test.py'],
     stdout=subprocess.PIPE,
     stdin=subprocess.PIPE,
     bufsize=0,

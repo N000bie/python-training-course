@@ -4,7 +4,7 @@ import re
 from pexpect.popen_spawn import PopenSpawn
 
 login_test = PopenSpawn(
-    ['py', '-3', 'login_test.py'],
+    ['python', 'login_test.py'],
 )
 
 login_test.expect('Username: ')
